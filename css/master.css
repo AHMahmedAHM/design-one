@@ -1,0 +1,455 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Work Sans", sans-serif;
+}
+
+:root {
+    --main-color: #10cab7;
+    --secondary-color: #777;
+    --main-background-color: #eee;
+}
+
+/* 1. السلوك الافتراضي للشاشات الصغيرة جدًا (أصغر من 576 بكسل) */
+.container {
+    width: 100%;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 100px;
+}
+
+/* 2. الشاشات الصغيرة (Small >= 576px) */
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+/* 3. الشاشات المتوسطة (Medium >= 768px) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+/* 4. الشاشات الكبيرة (Large >= 992px) */
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+/* 5. الشاشات الكبيرة جدًا (X-Large >= 1200px) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* 6. الشاشات الضخمة (XX-Large >= 1400px) - تم إضافتها في Bootstrap 5 */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+.special-heading {
+    font-size: 100px;
+    color: #f6f6f6;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.special-heading + p {
+    color: var(--secondary-color, #777);
+    font-size: 20px;
+    width: fit-content;
+    margin: -90px auto 90px;
+    letter-spacing: 1.5px;
+}
+
+/*  START HEADER */
+/* main container */
+header.main-header .container {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* logo */
+header.main-header .logo a{
+    color: var(--main-color, #10cab7);
+    font-size: 20px;
+}
+
+/* link;s icon and words */
+header.main-header .links  {
+    position: relative;
+    z-index: 999;
+    align-self: flex-start; /* because its positiom absolute,so its top not center but zero, so I must ensure it  */
+}
+
+header.main-header .links .icon-links span  {
+    width: 30px;
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    left: -40px;
+    transition: .2s;
+    border-radius: 5px;
+}
+
+header.main-header .links:hover .icon-links span:nth-of-type(2){
+    width: 30px;
+    transform: translate(0,0)
+}
+
+header.main-header .links:hover  ul  {
+    display: flex;
+}
+
+
+header.main-header .links .icon-links span:nth-of-type(2) {
+    top: 10px;
+    width: 20px;
+    transform: translatex(10px)
+}
+
+header.main-header .links .icon-links span:last-of-type {
+    top: 20px;
+}
+
+header.main-header .links ul {
+    margin: 0;
+    list-style: none;
+    background-color: var(--main-background-color);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 30px;
+    top: 35px;
+    min-width: 100px;
+    display: none;
+}
+
+header.main-header .links ul::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border: 8px solid;
+    border-color: transparent transparent #eee;
+    position: absolute;
+    right: 0;
+    top: -15px;
+}
+
+header.main-header .links ul li { /* li control in cell but a contrl in font */
+    margin: 10px 0;
+}
+
+header.main-header .links ul a {
+    /* I love by flex and its center horizontal because of direction column . I ca by margin, and text-align*/
+    text-decoration: none;
+    color: #333;
+    padding-left: 5px;
+    transition: .2s;
+}
+
+header.main-header .links ul a:hover {
+    padding-left: 10px;
+}
+
+header.main-header .links ul li:not(:last-child) { /* li not a because li is child */
+    border-bottom: 1px solid #333;
+}
+
+/* END HEADER */
+
+/*START MAIN BODY */
+/* start landing section */
+.landing {
+    background-image: url(../images/IMG-20260811-WA0001.jpg);
+    background-size: cover;
+    position: relative;
+    height: calc(100vh - 52px);
+}
+.landing .intro-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width:320px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.landing .intro-text h1 {
+    color: var(--main-color, #10cab7);
+    font-size: 50px;
+}
+
+.landing .intro-text p {
+    font-size: 19px;
+    line-height: 1.8;
+}
+/* end landing section */
+/* start features */
+.features .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap: 20px;
+}
+
+.features div {
+    margin-top: 20px;
+    margin-bottom: 20px; /* i want not margin: 20px 0; to not reset right and left */
+    color: #333;
+    text-align: center;
+
+}
+
+.features div i {
+    color: var(--main-color, #10cab7);
+}
+
+.features div h3 {
+    font-weight:800;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.features div p {
+    color: var(--secondary-color, #777);
+    line-height: 2;
+}
+/* end features */
+
+/* start services */
+.services .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.services div {
+    position: relative;
+    padding: 10px 10px 10px 20px;
+}
+
+.services div i{
+    color: var(--main-color, #10cab7);
+    position: absolute;
+    left: -40px;
+}
+
+@media (max-width: 768px) {
+    .services div i {
+        right: 40px;
+        left:unset;
+    }
+}
+
+.services div h3 {
+    font-weight: 800;
+    margin-bottom: 40px;
+}
+
+.services div p {
+    color: var(--secondary-color, #777);
+}
+
+.services .photo-services {
+    text-align: center;
+    position: relative; /* because itis his parent */
+    top: 20px;
+    margin:50px auto 100px;
+    width: 500px;
+    height: 300px;
+}
+
+.services .photo-services::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 400px;
+    top: -50px;
+    right: 100px;
+    background-color: var(--main-background-color);
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+    .services .photo-services  {
+        display: none;
+    }
+}
+
+.services .photo-services img { /* img inside image box and control by box to position and others */
+    width: 100%;
+    height: 100%;
+}
+/* end services */
+/* start portfolio */
+.portfolio {
+    background-color: var(--main-background-color);
+}
+
+.portfolio .container {
+    display: grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.portfolio div[class^='card'] {
+    background-color: white;
+}
+
+.portfolio div img {
+    width: 100%;
+    height: 200px;
+}
+
+.portfolio div .info {
+    padding: 20px;
+}
+
+.portfolio div .info h3 {
+    font-weight: 800;
+}
+
+.portfolio div .info p {
+    margin-top: 10px;
+    color: var(--secondary-color, #777);
+}
+/* end portfolio */
+/* start about */
+.about .container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+}
+
+.about .image {
+    width: 300px;
+    height: 600px;
+    padding: 30px 0 40px;
+    position: relative; /* the father for ::after*/
+}
+
+.about .image::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 600px;
+    background-color: var(--main-background-color);
+    left: -50px;
+    bottom: 10px;
+    z-index: -1;
+    
+}
+
+.about .image::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 500px;
+    border-left: 100px solid var(--main-color, #10cab7);
+    border-bottom: 100px solid var(--main-color, #10cab7);
+    right: -150px;
+    z-index:-1;
+}
+
+@media (max-width:768px) {
+    .about .image::before,
+    .about .image::after {
+        display: none;
+    }
+}
+
+.about .image img {
+    width: 100%;
+    height: 100%;
+}
+
+.about .info p {
+    padding: 40px;
+    line-height: 2;
+}
+
+.about .info p:first-of-type {
+    font-weight: bold;
+}
+
+.about .info p:nth-of-type(2) {
+    color: var(--secondary-color, #777);
+}
+
+.about .info hr {
+    background-color: var(--main-color, #10cab7);
+    width: 50%;
+    height: 2px;
+    transform: translatex(50%); /* 25% from white space + 25% from his width , margin, others*/ 
+}
+
+@media (min-width: 992px) {
+    .about .container {
+        flex-flow: row;
+    }
+}
+/* end about */
+/* start contact */
+.contact  {
+    background-color: var(--main-background-color);
+    text-align: center;
+}
+
+.contact .info > :not(.social-media) {
+    font-size: 30px;
+    letter-spacing: -1.5px;
+    font-weight: 800;
+    color: #2c4755;
+}
+
+.contact .info a[href] { /* to high specifity => specifity war */
+    text-decoration: none;
+    color: var(--main-color, #10cab7);
+}
+
+.contact  .info .social-media {
+    text-transform: capitalize;
+}
+/* end contact */
+/* END MAIN BODY */
+/* START FOOTER  */
+footer.main-footer {
+    background-color: #2c4755;
+}
+
+footer.main-footer .container  {
+    padding: 20px; 
+    display: flex;
+    font-weight: bold;
+    color: white; 
+    justify-content: center;
+    text-transform: capitalize;
+}
+
+footer.main-footer .programmer {
+    padding: 0 10px;
+    color: var(--main-color, #10cab7)    
+}
+/* END FOOTER */
